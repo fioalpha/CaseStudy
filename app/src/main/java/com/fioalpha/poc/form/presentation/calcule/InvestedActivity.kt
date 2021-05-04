@@ -11,35 +11,45 @@ import com.fioalpha.poc.domain.INVESTED_AMOUNT_FIELD
 import com.fioalpha.poc.domain.MATURITY_DATE_FIELD
 import com.fioalpha.poc.domain.RATE_FIELD
 import com.fioalpha.poc.form.databinding.InvestimentActivityBinding
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class InvestedActivity: AppCompatActivity() {
+private const val DATE_PICKER_TAG = "DATE_PICKER"
+
+class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private val viewModel: InvestedViewModel by inject()
 
     private val viewBindings by viewBinding(InvestimentActivityBinding::inflate)
 
+    private val datePickerDialog: DatePickerDialog by lazy {
+        DatePickerDialog.newInstance(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBindings.root)
+        setup()
+    }
+
+    override fun onDateSet(view: DatePickerDialog?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+        viewBindings.edtDate.setText("$dayOfMonth/$monthOfYear/$year")
+    }
+
+    private fun showDatePicker() {
+        datePickerDialog.show(supportFragmentManager, DATE_PICKER_TAG)
+    }
+
+    private fun setup() {
         viewModel.run {
-            lifecycleScope.launch {
-                bind().collect { renderState(it.state) }
-            }
+            lifecycleScope.launch { bind().collect { renderState(it.state) } }
         }
 
-        viewBindings.button.setOnClickListener {
-            viewModel.handle(InvestedInteraction.ValidatedForm(
-                FormData(
-                    viewBindings.edtInvestedAmount.text?.toString()?.toIntOrNull()?: 0,
-                    viewBindings.edtRate.text?.toString()?.toIntOrNull()?: 0,
-                    viewBindings.edtDate.text?.toString().orEmpty()
-                ))
-            )
-        }
-
+        viewBindings.tvDate.setOnClickListener { showDatePicker() }
+        viewBindings.edtDate.setOnClickListener { showDatePicker() }
+        viewBindings.button.setOnClickListener { handlerClickButton() }
     }
 
     private fun renderState(state: InvestedState) {
@@ -51,6 +61,15 @@ class InvestedActivity: AppCompatActivity() {
         viewModel.handle(InvestedInteraction.IDLE)
     }
 
+    private fun handlerClickButton() {
+        viewModel.handle(InvestedInteraction.ValidatedForm(
+                FormData(
+                        viewBindings.edtInvestedAmount.text?.toString()?.toIntOrNull()?: 0,
+                        viewBindings.edtRate.text?.toString()?.toIntOrNull()?: 0,
+                        viewBindings.edtDate.text?.toString().orEmpty()
+                ))
+        )
+    }
 
     private fun handlerErrorForm(errors: List<String>) {
         errors.forEach {
@@ -61,6 +80,7 @@ class InvestedActivity: AppCompatActivity() {
                 }
             }
     }
+
 }
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
