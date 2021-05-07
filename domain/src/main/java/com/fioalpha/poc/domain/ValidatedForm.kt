@@ -1,5 +1,7 @@
 package com.fioalpha.poc.domain
 
+import java.io.Serializable
+
 interface ValidatedForm {
     fun isValidated(form: FormData): List<String>
 }
@@ -46,4 +48,4 @@ data class FormData(
     val investedAmount: Int,
     val rate: Int,
     val maturityDate: String
-)
+): Serializable

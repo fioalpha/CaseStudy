@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:name=".CustomApplication"
         android:theme="@style/Theme.CaseStudy">
-        <activity android:name=".presentation.InvestedActivity">
+        <activity android:name=".presentation.calcule.InvestedActivity">
+
+        </activity>
+        <activity android:name=".presentation.result.ResultInvestCalculateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

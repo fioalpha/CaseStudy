@@ -1,5 +1,6 @@
-package com.fioalpha.poc.form.presentation
+package com.fioalpha.poc.form.presentation.calcule
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.fioalpha.poc.domain.INVESTED_AMOUNT_FIELD
 import com.fioalpha.poc.domain.MATURITY_DATE_FIELD
 import com.fioalpha.poc.domain.RATE_FIELD
 import com.fioalpha.poc.form.databinding.InvestimentActivityBinding
+import com.fioalpha.poc.form.presentation.result.ResultInvestCalculateActivity
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -46,7 +48,6 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         viewModel.run {
             lifecycleScope.launch { bind().collect { renderState(it.state) } }
         }
-
         viewBindings.tvDate.setOnClickListener { showDatePicker() }
         viewBindings.edtDate.setOnClickListener { showDatePicker() }
         viewBindings.button.setOnClickListener { handlerClickButton() }
@@ -56,7 +57,12 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         when(state) {
             is InvestedState.ErrorForms -> handlerErrorForm(state.errors)
             InvestedState.Idle -> {}
-            is InvestedState.Success -> Toast.makeText(this, "adasd", Toast.LENGTH_SHORT).show()
+            is InvestedState.Success -> {
+                Intent(this, ResultInvestCalculateActivity::class.java)
+                    .apply { putExtra("FORM", state.data) }
+                    .also { startActivity(it) }
+
+            }
         }
         viewModel.handle(InvestedInteraction.IDLE)
     }
