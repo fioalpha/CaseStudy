@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.fioalpha.poc.form"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -61,7 +61,13 @@ dependencies {
     implementation(project(":data"))
 
 
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3"
+    testImplementation("org.mockito:mockito-core:3.9.0")
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation('com.schibsted.spain:barista:3.9.0') {
+        exclude group: 'org.jetbrains.kotlin'
+    }
 }

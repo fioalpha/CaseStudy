@@ -11,6 +11,7 @@ import com.fioalpha.poc.domain.FormData
 import com.fioalpha.poc.domain.INVESTED_AMOUNT_FIELD
 import com.fioalpha.poc.domain.MATURITY_DATE_FIELD
 import com.fioalpha.poc.domain.RATE_FIELD
+import com.fioalpha.poc.form.R
 import com.fioalpha.poc.form.databinding.InvestimentActivityBinding
 import com.fioalpha.poc.form.presentation.result.ResultInvestCalculateActivity
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
@@ -80,9 +81,9 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
     private fun handlerErrorForm(errors: List<String>) {
         errors.forEach {
                 when(it) {
-                    INVESTED_AMOUNT_FIELD -> viewBindings.edtInvestedAmount.error = "Campo errado"
-                    RATE_FIELD -> viewBindings.edtRate.error = "CAMPO ERRODO"
-                    MATURITY_DATE_FIELD -> viewBindings.edtDate.error = "CAMPO ERROR"
+                    INVESTED_AMOUNT_FIELD -> viewBindings.edtInvestedAmount.error = getString(R.string.erro_fields)
+                    RATE_FIELD -> viewBindings.edtRate.error = getString(R.string.erro_fields)
+                    MATURITY_DATE_FIELD -> viewBindings.edtDate.error = getString(R.string.erro_fields)
                 }
             }
     }

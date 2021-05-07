@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CaseStudy</string>
     <string name="new_simulator">Simulator novamente</string>
+    <string name="erro_fields">Campo errado</string>
 </resources>

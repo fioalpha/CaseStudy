@@ -20,12 +20,7 @@ class InvestedViewModel(
 
     init {
         viewModelScope.launch {
-            interactions.consumeAsFlow().collect { interaction ->
-                when (interaction) {
-                    is InvestedInteraction.ValidatedForm -> validatedForm(interaction.data)
-                    InvestedInteraction.IDLE -> states.value = State(InvestedState.Idle)
-                }
-            }
+            interactions.consumeAsFlow().collect(::interactionHandler)
         }
     }
 
@@ -40,6 +35,13 @@ class InvestedViewModel(
         when {
             validatedResult.isEmpty() -> states.value = State(state = InvestedState.Success(data))
             else -> states.value = State(InvestedState.ErrorForms(validatedResult))
+        }
+    }
+
+    private fun interactionHandler(interaction: InvestedInteraction) {
+        when (interaction) {
+            is InvestedInteraction.ValidatedForm -> validatedForm(interaction.data)
+            InvestedInteraction.IDLE -> states.value = State(InvestedState.Idle)
         }
     }
 }
