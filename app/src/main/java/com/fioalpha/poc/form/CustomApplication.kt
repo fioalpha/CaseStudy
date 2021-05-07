@@ -1,6 +1,8 @@
 package com.fioalpha.poc.form
 
 import android.app.Application
+import com.fioalpha.poc.data.di.dataModuleDI
+import com.fioalpha.poc.di.domainDI
 import com.fioalpha.poc.domain.*
 import com.fioalpha.poc.domain.model.Investment
 import com.fioalpha.poc.domain.model.InvestmentParameter
@@ -22,7 +24,11 @@ class CustomApplication: Application() {
         startKoin {
             androidLogger()
             androidContext(this@CustomApplication)
-            modules(appModule)
+            modules(
+                appModule,
+                dataModuleDI,
+                domainDI
+            )
         }
     }
 }
@@ -30,35 +36,6 @@ class CustomApplication: Application() {
 val appModule = module {
     single<ValidatedForm> {
         ValidatedFormImpl(InvestedAmountFieldUseCase(), RateFieldUseCase(), MaturityDateFieldUseCase())
-    }
-    single<CalculateInvestedUseCase> {
-        CalculateInvestedUseCaseImpl(object: Repository{
-            override suspend fun fetchInvestment(formData: FormData): Investment {
-                delay(300)
-                return Investment(
-                    1.0,
-                    1.0,
-                    1.0,0.0,
-                    0.0,
-                    InvestmentParameter(
-                        0.0,
-                        true,
-                        0,
-                        "",
-                        0,
-                        0.0,
-                        0.0
-                    ),
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                )
-            }
-
-        })
     }
     viewModel { InvestedViewModel(get()) }
     viewModel { ResultInvestViewModel(get()) }

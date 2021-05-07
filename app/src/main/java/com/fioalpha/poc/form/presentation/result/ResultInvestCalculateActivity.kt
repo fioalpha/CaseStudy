@@ -14,6 +14,7 @@ import com.fioalpha.poc.domain.FormData
 import com.fioalpha.poc.domain.model.Investment
 import com.fioalpha.poc.form.databinding.ResultInvestmentActivityBinding
 import com.fioalpha.poc.form.presentation.calcule.viewBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -63,7 +64,11 @@ class ResultInvestCalculateActivity : AppCompatActivity() {
         }
     }
 
-    private fun showError() {}
+    private fun showError() {
+        viewBindings.groupData.hide()
+        viewBindings.groupLoading.hide()
+        Snackbar.make(viewBindings.resultInvestmentHead, "Houve error", Snackbar.LENGTH_SHORT).show()
+    }
 
     private fun showLoader() {
         viewBindings.groupLoading.show()

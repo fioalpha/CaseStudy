@@ -58,6 +58,7 @@ dependencies {
 
     implementation(project(":domain"))
     implementation(project(":component"))
+    implementation(project(":data"))
 
 
     testImplementation 'junit:junit:4.+'
