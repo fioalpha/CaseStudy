@@ -1,6 +1,7 @@
 package com.fioalpha.poc.domain
 
 import com.fioalpha.poc.domain.model.FormData
+import com.fioalpha.poc.extensions.isTrue
 
 interface ValidatedForm {
     fun isValidated(form: FormData): List<String>
