@@ -1,6 +1,6 @@
 package com.fioalpha.poc.form.presentation.calcule
 
-import com.fioalpha.poc.domain.FormData
+import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.domain.ValidatedForm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -66,5 +66,4 @@ class InvestedViewModelTest {
             assertEquals(model.bind().value, State(InvestedState.ErrorForms(errorMock)))
         }
     }
-
 }

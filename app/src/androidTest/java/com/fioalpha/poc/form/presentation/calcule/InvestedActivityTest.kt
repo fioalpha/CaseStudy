@@ -1,10 +1,7 @@
 package com.fioalpha.poc.form.presentation.calcule
 
-import android.widget.EditText
 import androidx.test.rule.ActivityTestRule
 import com.fioalpha.poc.form.R
-import com.schibsted.spain.barista.assertion.BaristaAssertions.assertAny
-import com.schibsted.spain.barista.assertion.BaristaAssistiveTextAssertions.assertAssistiveText
 import com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertErrorDisplayed
 import com.schibsted.spain.barista.assertion.BaristaErrorAssertions.assertNoErrorDisplayed
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertContains
@@ -12,7 +9,6 @@ import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertD
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
 import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
 import com.schibsted.spain.barista.internal.viewaction.SleepViewAction.sleep
-import kotlinx.coroutines.delay
 import org.junit.Rule
 import org.junit.Test
 
@@ -21,9 +17,8 @@ class InvestedActivityTest {
     @get:Rule
     val activityRules = ActivityTestRule(InvestedActivity::class.java, true, false)
 
-
     @Test
-    fun whenStartingApplication()  {
+    fun whenStartingApplication() {
         activityRules.launchActivity(null)
         assertDisplayed(R.id.edtDate)
     }
@@ -50,7 +45,6 @@ class InvestedActivityTest {
         assertErrorDisplayed(R.id.edtDate, R.string.erro_fields)
         sleep(2000)
         assertNoErrorDisplayed(R.id.edtRate)
-
     }
 
     @Test
@@ -65,6 +59,5 @@ class InvestedActivityTest {
         assertDisplayed(R.id.edtRate, "100%")
         clickOn(R.id.button)
         assertDisplayed(R.id.progressBar)
-
     }
 }

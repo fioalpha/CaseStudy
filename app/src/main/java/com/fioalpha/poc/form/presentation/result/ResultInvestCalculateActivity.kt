@@ -1,9 +1,6 @@
 package com.fioalpha.poc.form.presentation.result
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.fioalpha.poc.component.extension.hide
@@ -11,15 +8,13 @@ import com.fioalpha.poc.component.extension.show
 import com.fioalpha.poc.component.view.ResultInvestmentHeadModel
 import com.fioalpha.poc.component.view.model.ResultInvestmentBottomModel
 import com.fioalpha.poc.component.view.model.ResultInvestmentMediumModel
-import com.fioalpha.poc.domain.FormData
-import com.fioalpha.poc.domain.model.Investment
+import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.form.databinding.ResultInvestmentActivityBinding
 import com.fioalpha.poc.form.presentation.calcule.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-
 
 const val FORM_EXTRA = "FORM"
 class ResultInvestCalculateActivity : AppCompatActivity() {
@@ -77,9 +72,9 @@ class ResultInvestCalculateActivity : AppCompatActivity() {
     }
 
     private fun setData(
-            head: ResultInvestmentHeadModel,
-            medium: ResultInvestmentMediumModel,
-            bottom: ResultInvestmentBottomModel
+        head: ResultInvestmentHeadModel,
+        medium: ResultInvestmentMediumModel,
+        bottom: ResultInvestmentBottomModel
     ) {
         viewBindings.groupData.show()
         viewBindings.groupLoading.hide()
@@ -87,5 +82,4 @@ class ResultInvestCalculateActivity : AppCompatActivity() {
         viewBindings.resultInvestmentMedium.bind(medium)
         viewBindings.resultInvestmentBottom.bind(bottom)
     }
-
 }

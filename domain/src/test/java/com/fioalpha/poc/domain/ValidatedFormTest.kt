@@ -1,6 +1,7 @@
 package com.fioalpha.poc.domain
 
 
+import com.fioalpha.poc.domain.model.FormData
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
 import org.junit.Test

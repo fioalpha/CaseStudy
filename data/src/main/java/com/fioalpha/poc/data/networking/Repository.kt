@@ -2,7 +2,7 @@ package com.fioalpha.poc.data.networking
 
 import com.fioalpha.poc.data.networking.model.RetrofitService
 import com.fioalpha.poc.data.networking.model.response.CalculateInvestmentResponse
-import com.fioalpha.poc.domain.FormData
+import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.domain.model.Investment
 import com.fioalpha.poc.domain.model.InvestmentParameter
 import com.fioalpha.poc.domain.repository.Repository

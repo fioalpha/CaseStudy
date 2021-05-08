@@ -2,7 +2,7 @@ package com.fioalpha.poc.form.presentation.calcule
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fioalpha.poc.domain.FormData
+import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.domain.ValidatedForm
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
 
 class InvestedViewModel(
-        private val validatedForm: ValidatedForm
-): ViewModel() {
+    private val validatedForm: ValidatedForm
+) : ViewModel() {
 
     private val states: MutableStateFlow<State> = MutableStateFlow(State(InvestedState.Idle))
     private val interactions = Channel<InvestedInteraction>(Channel.UNLIMITED)

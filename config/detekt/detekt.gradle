@@ -1,0 +1,31 @@
+configurations {
+    detekt
+}
+
+dependencies {
+    detekt "io.gitlab.arturbosch.detekt:detekt-cli:1.16.0"
+}
+
+task detektVerification(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code smells, code complexity based on detekt-config.yml."
+
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+
+    def input = "$projectDir"
+    def config = "$rootDir/config/detekt/detekt-config.yml"
+    def report = "xml:$buildDir/reports/detekt/detekt-checkstyle.xml"
+    def params = ["-i", input, "-c", config, "-r", report]
+    args(params)
+}
+
+subprojects {
+    if (project.name != "data") {
+        apply plugin: "io.gitlab.arturbosch.detekt"
+
+        detekt {
+            toolVersion = "1.0.0-RC15"
+        }
+    }
+}
+

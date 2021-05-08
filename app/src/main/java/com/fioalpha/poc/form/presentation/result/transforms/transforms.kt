@@ -16,7 +16,6 @@ fun Investment.transformBottom(): ResultInvestmentBottomModel {
     )
 }
 
-
 fun Investment.transformHead(): ResultInvestmentHeadModel {
     return ResultInvestmentHeadModel(
         investmentAmount = this.grossAmount,

@@ -4,7 +4,7 @@
     package="com.fioalpha.poc.form">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-sdk android:minSdkVersion="14" tools:overrideLibrary="com.schibsted.spain.barista"/>
+    <uses-sdk tools:overrideLibrary="com.schibsted.spain.barista"/>
 
     <application
         android:allowBackup="true"

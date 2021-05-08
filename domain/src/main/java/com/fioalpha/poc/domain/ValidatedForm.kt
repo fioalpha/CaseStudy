@@ -1,6 +1,6 @@
 package com.fioalpha.poc.domain
 
-import java.io.Serializable
+import com.fioalpha.poc.domain.model.FormData
 
 interface ValidatedForm {
     fun isValidated(form: FormData): List<String>
@@ -37,15 +37,3 @@ class ValidatedFormImpl(
     }
 
 }
-
-inline fun Boolean.isTrue(action: () -> Unit) {
-    if (this) {
-        action()
-    }
-}
-
-data class FormData(
-    val investedAmount: Double,
-    val rate: Int,
-    val maturityDate: String
-): Serializable
