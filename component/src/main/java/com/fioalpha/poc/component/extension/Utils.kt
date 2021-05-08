@@ -1,3 +1,5 @@
 package com.fioalpha.poc.component.extension
 
-fun Long.toPrice() = this / 100.0
+const val ONE_HUNDRED = 100.0
+
+fun Long.toPrice() = this / ONE_HUNDRED
