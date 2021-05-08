@@ -11,7 +11,7 @@ const val RATE_FIELD = "RATE_FIELD"
 const val MATURITY_DATE_FIELD = "MATURITY_DATE_FIELD"
 
 class ValidatedFormImpl(
-    private val investedAmountFieldUseCase: IsFieldFormValidated<Int>,
+    private val investedAmountFieldUseCase: IsFieldFormValidated<Double>,
     private val rateFieldUseCase: IsFieldFormValidated<Int>,
     private val maturityDateFieldUseCase: IsFieldFormValidated<String>
 ): ValidatedForm {
@@ -45,7 +45,7 @@ inline fun Boolean.isTrue(action: () -> Unit) {
 }
 
 data class FormData(
-    val investedAmount: Int,
+    val investedAmount: Double,
     val rate: Int,
     val maturityDate: String
 ): Serializable

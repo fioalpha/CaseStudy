@@ -1,7 +1,7 @@
 package com.fioalpha.poc.domain
 
-class InvestedAmountFieldUseCase: IsFieldFormValidated<Int> {
-    override fun isValidated(data: Int): Boolean {
+class InvestedAmountFieldUseCase: IsFieldFormValidated<Double> {
+    override fun isValidated(data: Double): Boolean {
         return data <= 0
     }
 }

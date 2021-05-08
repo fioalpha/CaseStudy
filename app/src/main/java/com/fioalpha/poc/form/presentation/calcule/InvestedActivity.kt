@@ -3,33 +3,35 @@ package com.fioalpha.poc.form.presentation.calcule
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.fioalpha.poc.component.textwatcher.DateTextWatcher
+import com.fioalpha.poc.component.textwatcher.PercentageTextWatcher
+import com.fioalpha.poc.component.textwatcher.ValueWatcher
 import com.fioalpha.poc.domain.FormData
 import com.fioalpha.poc.domain.INVESTED_AMOUNT_FIELD
 import com.fioalpha.poc.domain.MATURITY_DATE_FIELD
 import com.fioalpha.poc.domain.RATE_FIELD
 import com.fioalpha.poc.form.R
 import com.fioalpha.poc.form.databinding.InvestimentActivityBinding
+import com.fioalpha.poc.form.presentation.result.FORM_EXTRA
 import com.fioalpha.poc.form.presentation.result.ResultInvestCalculateActivity
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 private const val DATE_PICKER_TAG = "DATE_PICKER"
 
-class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class InvestedActivity: AppCompatActivity() {
 
     private val viewModel: InvestedViewModel by inject()
 
     private val viewBindings by viewBinding(InvestimentActivityBinding::inflate)
 
-    private val datePickerDialog: DatePickerDialog by lazy {
-        DatePickerDialog.newInstance(this)
-    }
+    private val removeSymbolsCurrency = Regex("[\\sR$]")
+    private val removeSymbol = Regex("[%]")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,21 +39,16 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         setup()
     }
 
-    override fun onDateSet(view: DatePickerDialog?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-        viewBindings.edtDate.setText("$dayOfMonth/$monthOfYear/$year")
-    }
-
-    private fun showDatePicker() {
-        datePickerDialog.show(supportFragmentManager, DATE_PICKER_TAG)
-    }
-
     private fun setup() {
         viewModel.run {
             lifecycleScope.launch { bind().collect { renderState(it.state) } }
         }
-        viewBindings.tvDate.setOnClickListener { showDatePicker() }
-        viewBindings.edtDate.setOnClickListener { showDatePicker() }
+
         viewBindings.button.setOnClickListener { handlerClickButton() }
+
+        viewBindings.edtInvestedAmount.addTextChangedListener(ValueWatcher(viewBindings.edtInvestedAmount))
+        viewBindings.edtRate.addTextChangedListener(PercentageTextWatcher(viewBindings.edtRate))
+        viewBindings.edtDate.addTextChangedListener(DateTextWatcher())
     }
 
     private fun renderState(state: InvestedState) {
@@ -60,7 +57,7 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
             InvestedState.Idle -> {}
             is InvestedState.Success -> {
                 Intent(this, ResultInvestCalculateActivity::class.java)
-                    .apply { putExtra("FORM", state.data) }
+                    .apply { putExtra(FORM_EXTRA, state.data) }
                     .also { startActivity(it) }
 
             }
@@ -71,9 +68,9 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
     private fun handlerClickButton() {
         viewModel.handle(InvestedInteraction.ValidatedForm(
                 FormData(
-                        viewBindings.edtInvestedAmount.text?.toString()?.toIntOrNull()?: 0,
-                        viewBindings.edtRate.text?.toString()?.toIntOrNull()?: 0,
-                        viewBindings.edtDate.text?.toString().orEmpty()
+                        viewBindings.edtInvestedAmount.convertToDouble(removeSymbolsCurrency),
+                        viewBindings.edtRate.clearCharacters(removeSymbol),
+                        viewBindings.edtDate.convertDate()
                 ))
         )
     }
@@ -88,6 +85,30 @@ class InvestedActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener 
             }
     }
 
+}
+
+fun EditText.convertDate(): String {
+    val textSplit = this.text.split("/")
+    return if (textSplit.count() == 3) {
+        "${textSplit[2]}-${textSplit[1]}-${textSplit[0]}"
+    } else {
+        ""
+    }
+}
+
+fun EditText.clearCharacters(regex: Regex): Int {
+    return this.text?.replace(regex,  "")
+        ?.toIntOrNull()?: 0
+}
+
+fun EditText.convertToDouble(regex: Regex): Double {
+    return this.text?.replace(regex, "")
+        ?.replace(",", ".")
+        .toDoubleOrZero()
+}
+
+fun String?.toDoubleOrZero(): Double {
+    return this?.toDoubleOrNull()?: 0.0
 }
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
