@@ -10,7 +10,7 @@ import com.fioalpha.poc.domain.ValidatedFormImpl
 import org.koin.dsl.module
 
 val domainDI = module {
-    factory<ValidatedForm>(override = true){
+    factory<ValidatedForm>(override = true) {
         ValidatedFormImpl(
             investedAmountFieldUseCase = InvestedAmountFieldUseCase(),
             rateFieldUseCase = RateFieldUseCase(),
@@ -18,7 +18,7 @@ val domainDI = module {
         )
     }
 
-    single<CalculateInvestedUseCase>{
+    single<CalculateInvestedUseCase> {
         CalculateInvestedUseCaseImpl(
             repository = get()
         )

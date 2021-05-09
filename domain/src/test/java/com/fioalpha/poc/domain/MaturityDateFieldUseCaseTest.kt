@@ -15,5 +15,4 @@ class MaturityDateFieldUseCaseTest {
     fun `when called isValidated With data length less than 10 characters Then return false`() {
         assertTrue(maturityDateFieldUseCase.isValidated("2022-0102"))
     }
-
 }

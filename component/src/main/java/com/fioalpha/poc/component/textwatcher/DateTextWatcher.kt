@@ -3,7 +3,7 @@ package com.fioalpha.poc.component.textwatcher
 import android.text.Editable
 import android.text.TextWatcher
 
-class DateTextWatcher: TextWatcher {
+class DateTextWatcher : TextWatcher {
 
     private var isCleaning = false
 
@@ -23,5 +23,4 @@ class DateTextWatcher: TextWatcher {
             }
         }
     }
-
 }

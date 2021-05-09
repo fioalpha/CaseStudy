@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# fail if any commands fails
+set -e
+# debug log
+set -x
+
+import sys
+import os.path
+from xml.etree import ElementTree
+
+first = None
+file_list = [
+"/bitrise/src/cache/build/reports/ktlint/ktlint-debug.xml",
+"/bitrise/src/cache/build/reports/ktlint/ktlint-debugUnitTest.xml",
+"/bitrise/src/remote/build/reports/ktlint/ktlint-main.xml",
+"/bitrise/src/remote/build/reports/ktlint/ktlint-test.xml",
+"/bitrise/src/base/build/reports/ktlint/ktlint-debug.xml",
+"/bitrise/src/base/build/reports/ktlint/ktlint-debugUnitTest.xml",
+"/bitrise/src/base/build/reports/ktlint/ktlint-debugAndroidTest.xml"]
+
+ktlintFile = 'ktlint-report-orig.xml'
+editedKtlintFile = 'ktlint-report.xml'
+
+for filename in file_list:
+    if os.path.isfile(filename):
+        data = ElementTree.parse(filename).getroot()
+        if first is None:
+            first = data
+        else:
+            first.extend(data)
+if first is not None:
+    f = open( ktlintFile, 'w' )
+    f.write( "\n" )
+    f.write( ElementTree.tostring(first) )
+    f.close()
+
+delete_list = ["/bitrise/src/"]
+fin = open(ktlintFile)
+fout = open(editedKtlintFile, "w+")
+for line in fin:
+    for word in delete_list:
+        line = line.replace(word, "")
+    fout.write(line)
+fin.close()
+fout.close()

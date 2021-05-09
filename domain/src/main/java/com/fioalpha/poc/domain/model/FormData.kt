@@ -6,4 +6,4 @@ data class FormData(
     val investedAmount: Double,
     val rate: Int,
     val maturityDate: String
-): Serializable
+) : Serializable

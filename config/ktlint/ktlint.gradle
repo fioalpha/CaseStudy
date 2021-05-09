@@ -11,3 +11,15 @@ task ktlintVerification(type: JavaExec, group: "verification") {
     main = "com.pinterest.ktlint.Main"
     args "-F", "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/reports/ktlint/ktlint-checkstyle.xml"
 }
+
+task runChecksForDanger() {
+    group = "Reporting"
+    dependsOn 'ktlintVerification'
+    dependsOn ':app:lint'
+    dependsOn ':component:lint'
+
+    def file = file("${project.rootDir}/build/reports/ktlint")
+    if (!file.exists()) file.mkdirs()
+    def lintFile = new File("${project.rootDir}/build/reports/lint")
+    if (!lintFile.exists()) lintFile.mkdirs()
+}

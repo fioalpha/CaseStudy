@@ -12,14 +12,14 @@ class ResultInvestmentBottom @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
-): LinearLayout(context, attributeSet, defStyleAttr) {
+) : LinearLayout(context, attributeSet, defStyleAttr) {
 
-    private val viewBinding:InvestmentResultBottomBinding by lazy {
+    private val viewBinding: InvestmentResultBottomBinding by lazy {
         InvestmentResultBottomBinding.inflate(LayoutInflater.from(context))
     }
 
     init {
-       addView(viewBinding.root, LayoutParams(LayoutParams.MATCH_PARENT,  LayoutParams.MATCH_PARENT))
+       addView(viewBinding.root, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
     }
 
     fun bind(data: ResultInvestmentBottomModel) {
@@ -30,6 +30,4 @@ class ResultInvestmentBottom @JvmOverloads constructor(
         viewBinding.tvAnnualGrossRateProfit.setPercentageValue(data.annualGrossRate)
         viewBinding.tvProfitabilityTime.setPercentageValue(data.profitabilityTime)
     }
-
 }
-

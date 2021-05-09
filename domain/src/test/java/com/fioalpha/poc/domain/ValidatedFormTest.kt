@@ -1,6 +1,5 @@
 package com.fioalpha.poc.domain
 
-
 import com.fioalpha.poc.domain.model.FormData
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
@@ -35,22 +34,20 @@ class ValidatedFormTest {
     }
 
     @Test
-    fun `when called isValidated Without error Then return list empty` () {
+    fun `when called isValidated Without error Then return list empty`() {
         whenever(investedAmountFieldUseCase.isValidated(1)).thenReturn(false)
         whenever(investedAmountFieldUseCase1.isValidated(1)).thenReturn(false)
         whenever(investedAmountFieldUseCase2.isValidated("2022-01-01")).thenReturn(false)
         val result = validatedForm.isValidated(formDataMock)
         assert(result.isEmpty())
-
     }
 
     @Test
-    fun `when called isValidated With error Then return one item error` () {
+    fun `when called isValidated With error Then return one item error`() {
         whenever(investedAmountFieldUseCase.isValidated(0)).thenReturn(true)
         whenever(investedAmountFieldUseCase1.isValidated(0)).thenReturn(true)
         whenever(investedAmountFieldUseCase2.isValidated("20220101")).thenReturn(true)
         val result = validatedForm.isValidated(formDataMock1)
         assert(result.count() == 3)
     }
-
 }

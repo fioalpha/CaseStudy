@@ -1,8 +1,9 @@
-kotlin_detekt.severity = "warning"
-kotlin_detekt.gradle_task = "detektVerification"
-kotlin_detekt.report_file = "app/build/reports/detekt/detekt-checkstyle.xml"
-kotlin_detekt.detekt(inline_mode: true)
-
+# ktlint
 checkstyle_format.base_path = Dir.pwd
-checkstyle_format.gradle_task = "ktlintVerification"
-checkstyle_format.report 'app/build/reports/ktlint/ktlint-checkstyle.xml'
+checkstyle_format.report "/bitrise/src/build/reports/ktlint/ktlint-report.xml"
+
+# AndroidLint
+android_lint.report_file = "/bitrise/src/build/reports/lint/lint-report.xml"
+android_lint.skip_gradle_task = true
+android_lint.severity = "Error"
+android_lint.lint(inline_mode: true)
