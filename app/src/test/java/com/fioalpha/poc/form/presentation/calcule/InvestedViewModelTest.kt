@@ -1,7 +1,7 @@
 package com.fioalpha.poc.form.presentation.calcule
 
-import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.domain.ValidatedForm
+import com.fioalpha.poc.domain.model.FormData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

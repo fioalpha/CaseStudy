@@ -2,8 +2,8 @@ package com.fioalpha.poc.form.presentation.calcule
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.domain.ValidatedForm
+import com.fioalpha.poc.domain.model.FormData
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
