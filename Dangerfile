@@ -1,13 +1,8 @@
-# ktlint
+kotlin_detekt.severity = "warning"
+kotlin_detekt.gradle_task = "detektVerification"
+kotlin_detekt.report_file = "test.xml"
+kotlin_detekt.detekt(inline_mode: true)
+
 checkstyle_format.base_path = Dir.pwd
-checkstyle_format.report "test.xml"
-
-# AndroidLint
-android_lint.report_file = "test.xml"
-android_lint.skip_gradle_task = true
-android_lint.severity = "Error"
-android_lint.lint(inline_mode: true)
-
-# Android klint
-#ktlint.lint
-#ktlint.lint(inline_mode: true)
+checkstyle_format.gradle_task = "ktlintVerification"
+checkstyle_format.report 'test.xml'
