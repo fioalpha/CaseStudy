@@ -26,6 +26,7 @@ for xml_file in xml_files:
     if os.stat(xml_file).st_size == 0:
         continue;
 
+    print("12   qwq123")
     data = ElementTree.parse(xml_file).getroot()
 
     for result in data.iter('file'):
