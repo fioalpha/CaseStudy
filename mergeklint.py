@@ -38,3 +38,5 @@ if xml_element_tree is not None:
     f.write( "\n" )
     f.write( ElementTree.tostring(xml_element_tree).decode("utf-8") )
     f.close()
+    if os.path.exists(xml_file):
+        print("FILE_NOT_EXIST")

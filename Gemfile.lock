@@ -1,21 +1,3 @@
-GIT
-  remote: https://github.com/sp4wna1/danger-checkstyle_format
-  revision: a5f791d515b0734e600efde9dccfbc51d6f78f7b
-  specs:
-    danger-checkstyle_format (0.1.0)
-      danger-plugin-api (~> 1.0)
-      nokogiri
-      ox (~> 2.0)
-
-GIT
-  remote: https://github.com/sp4wna1/danger-kotlin_detekt
-  revision: 54d152fa007231dedc90357a2ef6a528b72493e3
-  specs:
-    danger-kotlin_detekt (0.0.3)
-      danger-plugin-api (~> 1.0)
-      nokogiri
-      oga
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +26,12 @@ GEM
       no_proxy_fix
       octokit (~> 4.7)
       terminal-table (>= 1, < 4)
+    danger-android_lint (0.0.8)
+      danger-plugin-api (~> 1.0)
+      oga
+    danger-checkstyle_format (0.1.1)
+      danger-plugin-api (~> 1.0)
+      ox (~> 2.0)
     danger-plugin-api (1.0.0)
       danger (> 2.0)
     faraday (1.4.1)
@@ -66,10 +54,6 @@ GEM
     multipart-post (2.1.1)
     nap (1.1.0)
     no_proxy_fix (0.1.2)
-    nokogiri (1.11.3-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.11.3-x86_64-darwin)
-      racc (~> 1.4)
     octokit (4.21.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
@@ -79,7 +63,6 @@ GEM
     open4 (1.3.4)
     ox (2.14.4)
     public_suffix (4.0.6)
-    racc (1.5.2)
     rchardet (1.8.0)
     rexml (3.2.5)
     ruby-ll (2.1.2)
@@ -98,8 +81,8 @@ PLATFORMS
 
 DEPENDENCIES
   danger
-  danger-checkstyle_format!
-  danger-kotlin_detekt!
+  danger-android_lint
+  danger-checkstyle_format
 
 BUNDLED WITH
    2.2.17
