@@ -12,6 +12,8 @@ task ktlintVerification(type: JavaExec, group: "verification") {
     args "-F", "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/reports/ktlint/ktlint-checkstyle.xml"
 }
 
+
+
 task runChecksForDanger() {
     group = "Reporting"
     dependsOn 'ktlintVerification'
