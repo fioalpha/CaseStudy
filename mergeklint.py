@@ -8,10 +8,15 @@ BASE_DIRECTORY = "/bitrise/src"
 
 xml_files = [
     "app/build/reports/ktlint/ktlint-checkstyle.xml",
+    "app/build/reports/detekt/detekt-checkstyle.xml",
     "component/build/reports/ktlint/ktlint-checkstyle.xml",
+    "component/build/reports/detekt/detekt-checkstyle.xml",
     "data/build/reports/ktlint/ktlint-checkstyle.xml",
+    "data/build/reports/detekt/ktlint-checkstyle.xml",
     "domain/build/reports/ktlint/ktlint-checkstyle.xml",
+    "domain/build/reports/detekt/detekt-checkstyle.xml",
     "extensions/build/reports/ktlint/ktlint-checkstyle.xml",
+    "extensions/build/reports/detekt/detekt-checkstyle.xml",
 
 ]
 
