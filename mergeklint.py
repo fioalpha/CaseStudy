@@ -8,10 +8,10 @@ BASE_DIRECTORY = "/bitrise/src"
 
 xml_files = [
     "/bitrise/src/app/build/reports/ktlint/ktlint-checkstyle.xml",
-    # f"{BASE_DIRECTORY}/component/build/reports/ktlint/ktlint-checkstyle.xml",
-    # f"{BASE_DIRECTORY}/data/build/reports/ktlint/ktlint-checkstyle.xml",
-    # f"{BASE_DIRECTORY}/domain/build/reports/ktlint/ktlint-checkstyle.xml",
-    # f"{BASE_DIRECTORY}/extensions/build/reports/ktlint/ktlint-checkstyle.xml",
+    "/bitrise/src//component/build/reports/ktlint/ktlint-checkstyle.xml",
+    "/bitrise/src//data/build/reports/ktlint/ktlint-checkstyle.xml",
+    "/bitrise/src//domain/build/reports/ktlint/ktlint-checkstyle.xml",
+    "/bitrise/src//extensions/build/reports/ktlint/ktlint-checkstyle.xml",
 
 ]
 
