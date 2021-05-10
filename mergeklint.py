@@ -7,7 +7,7 @@ from xml.etree import ElementTree
 BASE_DIRECTORY = "/bitrise/src"
 
 xml_files = [
-    f"/bitrise/src/app/build/reports/ktlint/ktlint-checkstyle.xml",
+    "/bitrise/src/app/build/reports/ktlint/ktlint-checkstyle.xml",
     # f"{BASE_DIRECTORY}/component/build/reports/ktlint/ktlint-checkstyle.xml",
     # f"{BASE_DIRECTORY}/data/build/reports/ktlint/ktlint-checkstyle.xml",
     # f"{BASE_DIRECTORY}/domain/build/reports/ktlint/ktlint-checkstyle.xml",
