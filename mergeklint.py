@@ -7,15 +7,17 @@ from xml.etree import ElementTree
 BASE_DIRECTORY = "/bitrise/src"
 
 xml_files = [
-    "/bitrise/src/app/build/reports/ktlint/ktlint-checkstyle.xml",
-    "/bitrise/src/component/build/reports/ktlint/ktlint-checkstyle.xml",
-    "/bitrise/src/data/build/reports/ktlint/ktlint-checkstyle.xml",
-    "/bitrise/src/domain/build/reports/ktlint/ktlint-checkstyle.xml",
-    "/bitrise/src/extensions/build/reports/ktlint/ktlint-checkstyle.xml",
+    "app/build/reports/ktlint/ktlint-checkstyle.xml",
+    "component/build/reports/ktlint/ktlint-checkstyle.xml",
+    "data/build/reports/ktlint/ktlint-checkstyle.xml",
+    "domain/build/reports/ktlint/ktlint-checkstyle.xml",
+    "extensions/build/reports/ktlint/ktlint-checkstyle.xml",
 
 ]
 
 xml_element_tree = None
+
+print("lkzsdlkasdkl")
 
 for xml_file in xml_files:
     if not os.path.exists(xml_file):
