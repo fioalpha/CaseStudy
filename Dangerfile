@@ -1,6 +1,6 @@
 # ktlint
 checkstyle_format.base_path = Dir.pwd
-checkstyle_format.report "/bitrise/src/test.xml"
+checkstyle_format.report "test.xml"
 
 # AndroidLint
 # android_lint.report_file = "/bitrise/src/build/reports/lint/lint-report.xml"

@@ -38,7 +38,7 @@ for xml_file in xml_files:
 
 if xml_element_tree is not None:
     # print(ElementTree.tostring(xml_element_tree))
-    f = open( "/bitrise/src/test.xml", 'w' )
+    f = open( "test.xml", 'w' )
     f.write( "\n" )
     f.write( ElementTree.tostring(xml_element_tree).decode("utf-8") )
     f.close()
