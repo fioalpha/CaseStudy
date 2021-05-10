@@ -20,6 +20,7 @@ xml_element_tree = None
 print("lkzsdlkasdkl")
 
 for xml_file in xml_files:
+    print("12123")
     if not os.path.exists(xml_file):
         continue;
     if os.stat(xml_file).st_size == 0:
