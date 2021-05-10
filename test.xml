@@ -1,0 +1,25 @@
+
+<checkstyle version="8.0">
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/androidTest/java/com/fioalpha/poc/component/ExampleInstrumentedTest.kt">
+		<error line="5" column="1" severity="error" message="Wildcard import (cannot be auto-corrected)" source="no-wildcard-imports" />
+	</file>
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/main/java/com/fioalpha/poc/component/extension/EditTextExtensionFunction.kt">
+		<error line="6" column="1" severity="error" message="Wildcard import (cannot be auto-corrected)" source="no-wildcard-imports" />
+	</file>
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/main/java/com/fioalpha/poc/component/textwatcher/ValueWatcher.kt">
+		<error line="8" column="1" severity="error" message="Wildcard import (cannot be auto-corrected)" source="no-wildcard-imports" />
+	</file>
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/main/java/com/fioalpha/poc/component/view/ResultInvestmentBottom.kt">
+		<error line="22" column="1" severity="error" message="Unexpected indentation (7) (it should be 8) (cannot be auto-corrected)" source="indent" />
+	</file>
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/main/java/com/fioalpha/poc/component/view/ResultInvestmentMedium.kt">
+		<error line="11" column="1" severity="error" message="Wildcard import (cannot be auto-corrected)" source="no-wildcard-imports" />
+		<error line="24" column="1" severity="error" message="Unexpected indentation (7) (it should be 8) (cannot be auto-corrected)" source="indent" />
+	</file>
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/main/java/com/fioalpha/poc/component/view/model/ResultInvestmentBottomModel.kt">
+		<error line="9" column="35" severity="error" message="Not a valid Kotlin file (expecting a parameter declaration) (cannot be auto-corrected)" source="" />
+	</file>
+	<file name="/Users/wesleysilva/project/poc/CaseStudy/component/src/test/java/com/fioalpha/poc/component/ExampleUnitTest.kt">
+		<error line="3" column="1" severity="error" message="Wildcard import (cannot be auto-corrected)" source="no-wildcard-imports" />
+	</file>
+</checkstyle>

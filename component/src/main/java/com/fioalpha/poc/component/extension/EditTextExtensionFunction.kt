@@ -22,5 +22,3 @@ fun TextView.setMoneyWithTaxes(value: Double, taxesRate: Double) {
         .format(value)
     text = "$valueFormat[$taxesRate%]"
 }
-
-

@@ -6,7 +6,7 @@ import android.widget.EditText
 
 class PercentageTextWatcher(
     private val editText: EditText
-): TextWatcher {
+) : TextWatcher {
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
     }
 
@@ -19,12 +19,10 @@ class PercentageTextWatcher(
     }
 
     override fun afterTextChanged(s: Editable?) {
-
     }
 
     private fun lastPosition(text: String): Int {
-        return if(text.isEmpty()) 0
+        return if (text.isEmpty()) 0
         else text.length
     }
-
 }

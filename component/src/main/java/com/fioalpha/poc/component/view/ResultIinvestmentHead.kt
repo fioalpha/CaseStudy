@@ -4,8 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.fioalpha.poc.component.R
 import com.fioalpha.poc.component.databinding.InvestResultHeadBinding
 import com.fioalpha.poc.component.extension.setMonetary
 
@@ -13,7 +11,7 @@ class ResultInvestmentHead @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
-): LinearLayout(context, attributeSet, defStyleAttr) {
+) : LinearLayout(context, attributeSet, defStyleAttr) {
 
     private val viewBinding: InvestResultHeadBinding by lazy {
         InvestResultHeadBinding.inflate(LayoutInflater.from(context))
@@ -27,7 +25,6 @@ class ResultInvestmentHead @JvmOverloads constructor(
         viewBinding.investResultAmount.setMonetary(data.yieldValue)
         viewBinding.investResultAmount.text = "Rendimento total de ${data.yieldValue}"
     }
-
 }
 
 data class ResultInvestmentHeadModel(

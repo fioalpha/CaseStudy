@@ -27,7 +27,7 @@ const val LENGTH_DATE = 3
 fun EditText.convertDate(): String {
     val textSplit = this.text.split(SLASH_DELIMITER)
     return if (textSplit.count() == LENGTH_DATE) {
-        "${textSplit[DAY_INDEX]}$TRACE_DELIMITER${MOUTH_INDEX}$TRACE_DELIMITER${YEAR_INDEX}"
+        "${textSplit[DAY_INDEX]}$TRACE_DELIMITER${MOUTH_INDEX}$TRACE_DELIMITER$YEAR_INDEX"
     } else {
         EMPTY_TEXT
     }

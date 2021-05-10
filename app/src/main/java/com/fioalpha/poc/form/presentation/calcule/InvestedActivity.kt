@@ -12,10 +12,10 @@ import com.fioalpha.poc.component.extension.convertToDouble
 import com.fioalpha.poc.component.textwatcher.DateTextWatcher
 import com.fioalpha.poc.component.textwatcher.PercentageTextWatcher
 import com.fioalpha.poc.component.textwatcher.ValueWatcher
-import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.domain.INVESTED_AMOUNT_FIELD
 import com.fioalpha.poc.domain.MATURITY_DATE_FIELD
 import com.fioalpha.poc.domain.RATE_FIELD
+import com.fioalpha.poc.domain.model.FormData
 import com.fioalpha.poc.form.R
 import com.fioalpha.poc.form.databinding.InvestimentActivityBinding
 import com.fioalpha.poc.form.presentation.result.FORM_EXTRA
@@ -85,10 +85,6 @@ class InvestedActivity : AppCompatActivity() {
             }
     }
 }
-
-
-
-
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
     crossinline binder: (LayoutInflater) -> T

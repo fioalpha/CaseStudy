@@ -13,3 +13,5 @@ inline fun Boolean.isTrue(action: () -> Unit) {
         action()
     }
 }
+
+fun test() {}

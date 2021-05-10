@@ -9,7 +9,7 @@ import com.fioalpha.poc.domain.repository.Repository
 
 class RepositoryImpl(
     private val retrofitService: RetrofitService
-): Repository {
+) : Repository {
     override suspend fun fetchInvestment(formData: FormData): Investment {
         return retrofitService.fetchInvestment(
             formData.investedAmount,
@@ -19,7 +19,6 @@ class RepositoryImpl(
             transformDomain()
         }
     }
-
 }
 
 fun CalculateInvestmentResponse.transformDomain(): Investment {
@@ -30,7 +29,7 @@ fun CalculateInvestmentResponse.transformDomain(): Investment {
         grossAmount = grossAmount,
         grossAmountProfit = grossAmountProfit,
         investmentParameter = InvestmentParameter(
-            investedAmount =  investmentParameter.investedAmount,
+            investedAmount = investmentParameter.investedAmount,
             isTaxFree = investmentParameter.isTaxFree,
             maturityBusinessDays = investmentParameter.maturityBusinessDays,
             maturityDate = investmentParameter.maturityDate,

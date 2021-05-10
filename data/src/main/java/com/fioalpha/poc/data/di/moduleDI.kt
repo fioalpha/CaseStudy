@@ -6,16 +6,14 @@ import com.fioalpha.poc.data.networking.model.RetrofitService
 import com.fioalpha.poc.domain.repository.Repository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.qualifier.qualifier
 import org.koin.dsl.module
-import kotlin.math.sin
 
 val dataModuleDI = module {
-    single<Repository>{
+    single<Repository> {
         RepositoryImpl(retrofitService = get())
     }
 
-    single<RetrofitService>{
+    single<RetrofitService> {
         RetrofitBuilder.invoke(
             url = get(),
             client = get()

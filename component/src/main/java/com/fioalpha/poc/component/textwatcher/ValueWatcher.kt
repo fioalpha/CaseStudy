@@ -9,7 +9,7 @@ import java.util.*
 
 class ValueWatcher(
     private val editText: EditText
-): TextWatcher {
+) : TextWatcher {
     private var current: CharSequence? = ""
     private val filterTextRegex = Regex("[R$,.]")
     private var isChange: Boolean = false
@@ -40,9 +40,9 @@ class ValueWatcher(
     }
 
     private fun isCanChangeText(text: CharSequence?): Boolean {
-        return text.isNullOrEmpty()
-                && current == text
-                && isChange.not()
+        return text.isNullOrEmpty() &&
+                current == text &&
+                isChange.not()
     }
 
     private fun stringToPriceFormat(text: String): String {
@@ -55,7 +55,7 @@ class ValueWatcher(
         }
         val localeDefault = Locale.getDefault()
         val currency = NumberFormat.getCurrencyInstance(localeDefault).currency
-            ?.getSymbol(localeDefault)?.trim()?: ""
+            ?.getSymbol(localeDefault)?.trim() ?: ""
         val number = NumberFormat.getCurrencyInstance(localeDefault)
             .format(valueClean.toPrice())
             .replace(currency, "")
