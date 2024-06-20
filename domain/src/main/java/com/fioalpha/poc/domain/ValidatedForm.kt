@@ -15,7 +15,7 @@ class ValidatedFormImpl(
     private val investedAmountFieldUseCase: IsFieldFormValidated<Double>,
     private val rateFieldUseCase: IsFieldFormValidated<Int>,
     private val maturityDateFieldUseCase: IsFieldFormValidated<String>
-): ValidatedForm {
+) : ValidatedForm {
 
     private val errors: MutableList<String> = mutableListOf()
 
@@ -36,5 +36,4 @@ class ValidatedFormImpl(
 
         return errors
     }
-
 }
